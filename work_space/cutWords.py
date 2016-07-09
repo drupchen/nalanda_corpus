@@ -1,12 +1,8 @@
 #! /usr/bin/env python3
 
 import sys
+import os
 from bisect import bisect_left
-
-if len(sys.argv) < 2:
-    print("Run this script with the file you want to segment as argument!")
-    print("Doing nothing...")
-    exit(1)
 
 suffixes = {
     'འི': True,
@@ -184,12 +180,17 @@ def printSegmented(str):
 test = 'དཀར་ཆ་གི་དཀར་ཆར་ནོ་'
 
 def main():
-    global output
-    with open(sys.argv[1], 'r', encoding='utf-8') as content_file:
-        content = content_file.read()
-    printSegmented(content)
-    with open(sys.argv[1].split('.')[0]+'_segmented.txt', 'w', encoding='utf-8') as f:
-        f.write(output)
+    in_path = 'input/'
+    out_path = 'output/'
+    for F in os.listdir(in_path):
+        print(F)
+        global output
+        with open(in_path+F, 'r', encoding='utf-8') as content_file:
+            content = content_file.read()
+        printSegmented(content)
+        with open(out_path+F.split('.')[0]+'_segmented.txt', 'w', encoding='utf-8') as f:
+            f.write(output)
+        output = ''
 
 output = ''
 main()
