@@ -1,4 +1,10 @@
 one more test
+<<<<<<< HEAD
 and another one
 
 ah non, pas ca!
+=======
+
+
+truc
+>>>>>>> origin/master
