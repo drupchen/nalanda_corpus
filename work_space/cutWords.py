@@ -22,9 +22,9 @@ second_suffixes = {
 
 chars_to_insert = {
     'word': ' ',
-    'error': '!',
-    'particle': '+',
-    'suffix': '-'
+    'error': '',
+    'particle': ' ',
+    'suffix': ' '
 }
 
 lists = {}
