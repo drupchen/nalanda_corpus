@@ -126,14 +126,18 @@ def diff_conc(file_a, file_b, left_context=5, right_context=5):
         if len_a_left < len_b_left:
             keyword_a_start = center_a - len_b_left - 1
         if len_a_right > len_b_right:
-            keyword_start = center + len_a_left + 1
+            keyword_end = center + len_a_right + 1
         if len_a_right < len_b_right:
-            keyword_a_start = center_a + len_b_right + 1
+            keyword_a_end = center_a + len_b_right + 1
 
         keyword_string_A = A[keyword_a_start:keyword_a_end].strip()
         keyword_string_B = B[keyword_start:keyword_end].strip()
         left_string = B[keyword_start - l_c:keyword_start].strip()
         right_string = B[keyword_end:keyword_end+r_c].strip()
+        # debug
+        #if left_string == 'ན། གནས་ ནི་ ཡིད་ མཐུན་':
+        #    print(A[center_a-50:center_a+50])
+        #    print(B[center-50:center+50])
         conc_list.append(left_string+'\t'+keyword_string_B+'('+keyword_string_A+')\t'+right_string)
     return conc_list
 
@@ -163,7 +167,7 @@ A_path = 'gyu_cutwords_raw/'
 B_path = 'gyu_manual_checked_cutwords/'
 diff_path = 'gyu_diff/'
 
-pairs = [("རྒྱུད། ཐུ།_segmented.txt", "rgyud thu_.txt"), ("རྒྱུད། པུ།_segmented.txt", "rgyud pu.txt"), ("རྒྱུད། ཏ།_segmented.txt", "rgyud ta_.txt"), ("རྒྱུད་ཡ།_segmented.txt", "rgyud ya_.txt"), ("རྒྱུད། ཞ།_segmented.txt", "rgyud zha_.txt"), ("རྒྱུད། ཀི།_segmented.txt", "rgyud ki_.txt"), ("རྒྱུད། དི།_segmented.txt", "rgyud di_.txt"), ("རྒྱུད། འ།_segmented.txt", "rgyud 'a_.txt"), ("རྒྱུད། ཝི།_segmented.txt", "rgyud wi_.txt"), ("རྒྱུད། ཁི།_segmented.txt", "rgyud khi_.txt"), ("རྒྱུད། ཛི།_segmented.txt", "rgyud dzi_.txt"), ("རྒྱུད། ཝ (1)_segmented.txt", "rgyud wa_.txt"), ("རྒྱུད། ས།_segmented.txt", "rgyud sa_.txt"), ("རྒྱུད། ཤ_segmented.txt", "rgyud sha_.txt"), ("རྒྱུད། ཇུ།_segmented.txt", "rgyud ju_.txt"), ("རྒྱུད། ཞི།_segmented.txt", "rgyud zhi_.txt"), ("རྒྱུད། རི།_segmented.txt", "rgyud ri_.txt"), ("རྒྱུད། པི།_segmented.txt", "rgyud pi_.txt"), ("རྒྱུད། ཧ།_segmented.txt", "rgyud ha_.txt"), ("རྒྱུད། ཕུ།_segmented.txt", "rgyud phu_.txt"), ("རྒྱུད། ཟི།_segmented.txt", "rgyud zi_.txt"), ("རྒྱུད། ཟ།_segmented.txt", "rgyud za_.txt"), ("རྒྱུད། ང་།_segmented.txt", "rgyud ngi_.txt"), ("རྒྱུད། ཚུ།_segmented.txt", "rgyud tshu.txt"), ("རྒྱུད། ཇ།_segmented.txt", "rgyud ja_.txt"), ("རྒྱུད། ནུ།_segmented.txt", "rgyud nu_.txt")]
+pairs = [("རྒྱུད། ཐུ།_segmented.txt", "rgyud thu_.txt"), ("རྒྱུད། པུ།_segmented.txt", "rgyud pu.txt"), ("རྒྱུད། ཏ།_segmented.txt", "rgyud ta_.txt"), ("རྒྱུད་ཡ།_segmented.txt", "rgyud ya_.txt"), ("རྒྱུད། ཞ།_segmented.txt", "rgyud zha_.txt"), ("རྒྱུད། ཀི།_segmented.txt", "rgyud ki_.txt"), ("རྒྱུད། དི།_segmented.txt", "rgyud di_.txt"), ("རྒྱུད། འ།_segmented.txt", "rgyud 'a_.txt"), ("རྒྱུད། ཝི།_segmented.txt", "rgyud wi_.txt"), ("རྒྱུད། ཁི།_segmented.txt", "rgyud khi_.txt"), ("རྒྱུད། ཛི།_segmented.txt", "rgyud dzi_.txt"), ("རྒྱུད། ཝ (1)_segmented.txt", "rgyud wa_.txt"), ("རྒྱུད། ས།_segmented.txt", "rgyud sa_.txt"), ("རྒྱུད། ཤ_segmented.txt", "rgyud sha_.txt"), ("རྒྱུད། ཇུ།_segmented.txt", "rgyud ju_.txt"), ("རྒྱུད། ཞི།_segmented.txt", "rgyud zhi_.txt"), ("རྒྱུད། རི།_segmented.txt", "rgyud ri_.txt"), ("རྒྱུད། པི།_segmented.txt", "rgyud pi_.txt"), ("རྒྱུད། ཧ།_segmented.txt", "rgyud ha_.txt"), ("རྒྱུད། ཕུ།_segmented.txt", "rgyud phu_.txt"), ("རྒྱུད། ཟི།_segmented.txt", "rgyud zi_.txt"), ("རྒྱུད། ཟ།_segmented.txt", "rgyud za_.txt"), ("རྒྱུད། ཚུ།_segmented.txt", "rgyud tshu.txt"), ("རྒྱུད། ཇ།_segmented.txt", "rgyud ja_.txt"), ("རྒྱུད། ནུ།_segmented.txt", "rgyud nu_.txt")]
 
 total = total_diff_conc(pairs, A_path, B_path)
 output = write_total_diff_conc(total)

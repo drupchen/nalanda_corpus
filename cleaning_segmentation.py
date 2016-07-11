@@ -5,6 +5,6 @@ for F in os.listdir(path):
     with open(path+F, 'r', encoding='utf-8-sig') as content_file:
         content = content_file.read()
     # processing
-    content = content.replace('+', ' ').replace('-', ' ').replace('!', '').replace('?', '')
+    content = content.replace('+', ' ').replace('-', ' ').replace('!', '').replace('?', '').replace('n', '').replace('l', '')
     with open(path+F, 'w', encoding='utf-8-sig') as f:
         f.write(content)
